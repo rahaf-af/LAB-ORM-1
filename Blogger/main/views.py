@@ -5,13 +5,15 @@ from .models import post
 # Create your views here.
 
 def home(request:HttpRequest):
-
+    #get all post
+    posts=post.objects.all()
     return render(request, 'main/home.html/')
 
 
 def new_post(request:HttpRequest):
 
-    create_post=post(title='my first sql project !!',content='I am very happy to share with you that I have finally started my first project using the database and I am confident that this project is the beginning and that I have a bright future full of achievements',is_published=True,published_at='2025-03-06')
-    create_post.save()
+    if request.method=="post":
+        create_post=post(title=request.post["title"],content=request.post["content"],is_published=request.post["is_published"],published_at=request.post["published_at"])
+        create_post.save()
 
-    return render(request, 'main/new_posts.html/')
+    return render(request, 'main/new_posts.html/',{"posts":post})
