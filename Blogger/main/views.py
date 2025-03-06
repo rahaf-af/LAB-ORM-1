@@ -7,7 +7,7 @@ from .models import post
 def home(request:HttpRequest):
     #get all post
     posts=post.objects.all()
-    return render(request, 'main/home.html/',{"posts":post})
+    return render(request, 'main/home.html/',{"posts":posts})
 
 
 def new_post(request:HttpRequest):
