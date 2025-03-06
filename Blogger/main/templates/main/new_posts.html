@@ -9,7 +9,7 @@
             
             <div clss="col-6">
                 <form class="d-flex flex-column gap-2" action="{% url 'main:new_post' %}" method="post" >
-                    {% csrf_token%}
+                    {% csrf_token %}
                     <p>What is the title of the post </p>
                     <input type="text" placeholder="title" name="title" class="form-control"/>
                     <p>Add your content</p>
