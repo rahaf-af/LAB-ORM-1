@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 from .models import post
 
@@ -13,7 +13,8 @@ def home(request:HttpRequest):
 def new_post(request:HttpRequest):
 
     if request.method=="post":
-        create_post=post(title=request.post["title"],content=request.post["content"],is_published=request.post["is_published"],published_at=request.post["published_at"])
+        create_post=post(title=request.post["title"],content=request.post["content"],is_published=request.post["is_published"],published_at=request.post["published_at"] , poster=request.FILES["poster"])
         create_post.save()
+        return redirect('main:home')
 
     return render(request, 'main/new_posts.html/')

@@ -8,7 +8,7 @@
         <div class="'row">
             
             <div clss="col-6">
-                <form class="d-flex flex-column gap-2" action="{% url 'main:new_post' %}" method="post" >
+                <form class="d-flex flex-column gap-2" action="{% url 'main:new_post' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <p>What is the title of the post </p>
                     <input type="text" placeholder="title" name="title" class="form-control"/>
@@ -23,6 +23,7 @@
                     </label>
                     <p>What day do you want to publish it?</p>
                     <input type="date" name="publish date"form-control/>
+                    <input type="file" name="postr"/>
                     <p></p>
                     <input type="submit" value="post" class="form-control"/>
                 </form>
