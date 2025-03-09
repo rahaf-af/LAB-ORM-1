@@ -51,5 +51,5 @@ def posts_delete(request:HttpRequest , post_id:int):
 
 def all_posts(request:HttpRequest):
     #get all post
-    posts=post.objects.filter(content__contains="python")
+    posts=post.objects.filter(content__contains="py").order_by("published_at")
     return render(request, 'main/all_post.html/',{"posts":posts})
