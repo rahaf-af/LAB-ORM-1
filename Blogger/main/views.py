@@ -18,3 +18,33 @@ def new_post(request:HttpRequest):
         return redirect('main:home')
 
     return render(request, 'main/new_posts.html/')
+
+def details(request:HttpRequest , post_id:int):
+    post_info= post.objects.get(pk=post_id)
+    
+
+    return render(request ,'main/details.html/',{"post_info":post} )
+
+def posts_update(request:HttpRequest , post_id:int):
+     update_info= post.objects.get(pk=post_id)
+
+     if request.method=="POST":
+         update_info.title=request.POST["title"]
+         update_info.content=request.POST["content"]
+         update_info.is_published=request.POST["is_publishe"]
+         update_info.published_at=request.POST["published_at"]
+         if "poster" in request.FILES:post.poster= request.FILES["poster"]
+       # update_info.poster=request.POST["poster"]
+        update_info.save()
+     
+
+     return redirect("main:update", post_id=post.id)
+         
+
+     return render(request ,'main/update.html/',{"update_info":post} )
+
+def posts_delete(request:HttpRequest , post_id:int):
+     delete_post= post.objects.get(pk=post_id)
+     delete_post.delete()
+     
+     return redirect("main:home")

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <div class="'row">
+            
+            <div clss="col-6">
+                <form class="d-flex flex-column gap-2" action="{% url 'update_info':updaate' %}" method="post" enctype="multipart/form-data"></form>
+                <p>What is the title of the post </p>
+                <input type="text" placeholder="title" name="title" class="form-control" value="{{post.title}}"/>
+                    {% csrf_token %}
+                    <p>Add your content</p>
+                    <textarea placeholder="content"class="form-control" class="form-control">{{post.conten}}</textarea>
+                    <p>ist published  </p>
+                    <label>
+                        <input type="radio" name="is_published" value="true">YES
+                    </label>
+                    <label>
+                        <input type="radio"name="is_published" value="false"> NO
+                    </label>
+                    <p>What time do you want to publish it?</p>
+                    <input type="date" name="publish date"class="form-control" value="{{post.published_at.isoformat}}" />
+                    <p></p>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{main.poster.url}}" class="w-100"/>
+                        </div>
+                    </div>
+                    <input type="file" name="postr"/>
+                    <p></p>
+                    <input type="submit" value="updat"class="form-control"/>
+                </form>
+
+
+
+
+
+    </body>
+
+
+
+</html>
