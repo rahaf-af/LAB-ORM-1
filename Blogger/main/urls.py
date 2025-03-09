@@ -9,5 +9,6 @@ urlpatterns=[
     path("details/<post_id>/", views.details, name="details"),
     path("update/<post_id>/", views.posts_update , name="posts_update"),
     path("delete /<post_id>/", views.posts_delete,name="posts_delete"),
+    path("all_post/", views.all_posts, name="all_posts")
 
 ]

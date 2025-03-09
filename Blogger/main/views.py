@@ -6,7 +6,7 @@ from .models import post
 
 def home(request:HttpRequest):
     #get all post
-    posts=post.objects.all()
+    posts=post.objects.all()[0:3]
     return render(request, 'main/home.html/',{"posts":posts})
 
 
@@ -48,3 +48,8 @@ def posts_delete(request:HttpRequest , post_id:int):
      delete_post.delete()
      
      return redirect("main:home")
+
+def all_posts(request:HttpRequest):
+    #get all post
+    posts=post.objects.all()
+    return render(request, 'main/all_post.html/',{"posts":posts})
